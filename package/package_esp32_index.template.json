@@ -2,7 +2,7 @@
   "packages": [
     {
       "name": "esp32",
-      "maintainer": "Espressif Systems",
+      "maintainer": "sme-community",
       "websiteURL": "https://github.com/espressif/arduino-esp32",
       "email": "hristo@espressif.com",
       "help": {

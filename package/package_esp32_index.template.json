@@ -3,10 +3,10 @@
     {
       "name": "esp32",
       "maintainer": "sme-community",
-      "websiteURL": "https://github.com/itsbhupendrasingh/nuttyfi32/tree/master",
-      "email": "schematicslab@gmail.com",
+      "websiteURL": "https://github.com/espressif/arduino-esp32",
+      "email": "hristo@espressif.com",
       "help": {
-        "online": "https://smedehradun.com/"
+        "online": "https://esp32.com"
       },
       "platforms": [
         {

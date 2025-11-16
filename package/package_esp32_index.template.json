@@ -3,10 +3,10 @@
     {
       "name": "esp32",
       "maintainer": "sme-community",
-      "websiteURL": "https://github.com/espressif/arduino-esp32",
+      "websiteURL": "https://github.com/itsbhupendrasingh/nuttyfi32",
       "email": "hristo@espressif.com",
       "help": {
-        "online": "https://esp32.com"
+        "online": "https://techmcu.in"
       },
       "platforms": [
         {
@@ -23,7 +23,7 @@
           },
           "boards": [
             {
-              "name": "ESP32 Dev Board"
+              "name": "nuttify32 Board"
             },
             {
               "name": "ESP32-C3 Dev Board"

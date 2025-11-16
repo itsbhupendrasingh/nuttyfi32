@@ -1,12 +1,12 @@
 {
   "packages": [
     {
-      "name": "esp32",
+      "name": "nuttify32",
       "maintainer": "sme-community",
-      "websiteURL": "https://github.com/espressif/arduino-esp32",
-      "email": "hristo@espressif.com",
+      "websiteURL": "https://github.com/itsbhupendrasingh/nuttyfi32/tree/master",
+      "email": "schematicslab@gmail.com",
       "help": {
-        "online": "https://esp32.com"
+        "online": "https://smedehradun.com/"
       },
       "platforms": [
         {

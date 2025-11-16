@@ -1,7 +1,7 @@
 {
   "packages": [
     {
-      "name": "nuttify32",
+      "name": "esp32",
       "maintainer": "sme-community",
       "websiteURL": "https://github.com/itsbhupendrasingh/nuttyfi32/tree/master",
       "email": "schematicslab@gmail.com",

@@ -3,7 +3,7 @@
     {
       "name": "esp32",
       "maintainer": "sme-community",
-      "websiteURL": "https://github.com/itsbhupendrasingh/nuttyfi32",
+      "websiteURL": "https://github.com/itsbhupendrasingh/nuttyfi32/tree/master",
       "email": "hristo@espressif.com",
       "help": {
         "online": "https://techmcu.in"

@@ -1,0 +1,42 @@
+# Build artifacts
+*.o
+*.a
+*.elf
+*.bin
+*.map
+*.d
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.log
+*.cache
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+
+# Compiled files
+*.exe
+*.dll
+*.so
+
+# Test files
+test_results/
+coverage/

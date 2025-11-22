@@ -13,7 +13,7 @@
           "name": "nuttyfi32",
           "architecture": "esp32",
           "version": "1.0.0",
-          "category": "nuttyfi32",
+          "category": "ESP32",
           "url": "https://github.com/itsbhupendrasingh/nuttyfi32/releases/download/1.0.0/nuttyfi32-1.0.0.zip",
           "archiveFileName": "nuttyfi32-1.0.0.zip",
           "checksum": "SHA-256:5388CA15542427B16443BED52820686F8008D83945B97B8A615EDB1AC3D426E2",

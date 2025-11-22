@@ -25,7 +25,7 @@ tools.gen_insights_pkg.cmd=python3 "{runtime.platform.path}"/tools/gen_insights_
 tools.gen_insights_pkg.cmd.windows="{runtime.platform.path}\tools\gen_insights_package.exe"
 
 compiler.path={tools.{build.tarch}-esp-elf-gcc.path}/bin/
-compiler.prefix={build.tarch}-{build.target}-elf-
+compiler.prefix={build.tarch}-esp-elf-
 
 compiler.sdk.path={tools.esp32-arduino-libs.path}/{build.chip_variant}
 compiler.sdk.path.windows={tools.esp32-arduino-libs.path}\{build.chip_variant}

@@ -16,8 +16,8 @@
           "category": "nuttyfi32",
           "url": "https://github.com/itsbhupendrasingh/nuttyfi32/releases/download/1.0.0/nuttyfi32-1.0.0.zip",
           "archiveFileName": "nuttyfi32-1.0.0.zip",
-          "checksum": "SHA-256:39D505D474F8095873871F5B1A5FE7C775E88113EAE57E10CA4AAFF32073B235",
-          "size": "25542599",
+          "checksum": "SHA-256:441C5165CE8EAE5A73879404E191B844300E54F98177290CD28433D7D88D0A8B",
+          "size": "25900528",
           "help": {
             "online": "https://github.com/itsbhupendrasingh/nuttyfi32"
           },
@@ -46,47 +46,47 @@
           ],
           "toolsDependencies": [
             {
-              "packager": "nuttyfi32",
+              "packager": "espressif",
               "name": "esp32-arduino-libs",
               "version": "idf-release_v5.5-8d036f2e-v2"
             },
             {
-              "packager": "nuttyfi32",
+              "packager": "espressif",
               "name": "xtensa-esp-elf-gcc",
               "version": "esp-14.2.0_20251107"
             },
             {
-              "packager": "nuttyfi32",
+              "packager": "espressif",
               "name": "xtensa-esp-elf-gdb",
               "version": "16.3_20250913"
             },
             {
-              "packager": "nuttyfi32",
+              "packager": "espressif",
               "name": "riscv32-esp-elf-gcc",
               "version": "esp-14.2.0_20251107"
             },
             {
-              "packager": "nuttyfi32",
+              "packager": "espressif",
               "name": "riscv32-esp-elf-gdb",
               "version": "16.3_20250913"
             },
             {
-              "packager": "nuttyfi32",
+              "packager": "espressif",
               "name": "openocd-esp32",
               "version": "v0.12.0-esp32-20250707"
             },
             {
-              "packager": "nuttyfi32",
+              "packager": "espressif",
               "name": "esptool_py",
               "version": "5.1.0"
             },
             {
-              "packager": "nuttyfi32",
+              "packager": "espressif",
               "name": "mkspiffs",
               "version": "0.2.3"
             },
             {
-              "packager": "nuttyfi32",
+              "packager": "espressif",
               "name": "mklittlefs",
               "version": "4.0.2-db0513a"
             },
@@ -97,8 +97,7 @@
             }
           ]
         }
-      ],
-      "tools": [
+      ]
         {
           "name": "esp32-arduino-libs",
           "version": "idf-release_v5.5-8d036f2e-v2",
@@ -633,3 +632,4 @@
     }
   ]
 }
+

@@ -16,8 +16,8 @@
           "category": "nuttyfi32",
           "url": "https://github.com/itsbhupendrasingh/nuttyfi32/releases/download/1.0.0/nuttyfi32-1.0.0.zip",
           "archiveFileName": "nuttyfi32-1.0.0.zip",
-          "checksum": "SHA-256:1C3A0255BECE56388F2F94359756413BE202E6FDDE3EAF773093AACEE1072E4E",
-          "size": "25900527",
+          "checksum": "SHA-256:4e70a89d5881d1c3f54e97704dd608837bf9e75a940a471e3d2665e9e4dc60c6",
+          "size": "25900528",
           "help": {
             "online": "https://github.com/itsbhupendrasingh/nuttyfi32"
           },
@@ -633,4 +633,3 @@
     }
   ]
 }
-

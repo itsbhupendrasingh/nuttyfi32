@@ -1,42 +1,64 @@
-# Build artifacts
-*.o
-*.a
-*.elf
-*.bin
-*.map
-*.d
+tools/esp32-arduino-libs
+tools/xtensa-esp-elf
+tools/xtensa-esp32-elf
+tools/xtensa-esp32s2-elf
+tools/xtensa-esp32s3-elf
+tools/xtensa-esp-elf-gdb
+tools/riscv32-esp-elf
+tools/riscv32-esp-elf-gdb
+tools/dist
+tools/esptool
+tools/esptool.exe
+tools/mkspiffs
+tools/mklittlefs
+tools/mkfatfs.exe
+tools/openocd-esp32
 
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
+# Ignore editor backup files and macOS system metadata
+.DS_Store
+.*.swp
+.*.swo
 *~
 
-# OS files
-.DS_Store
-Thumbs.db
-desktop.ini
+# Ignore build folder
+/build
 
-# Temporary files
-*.tmp
-*.log
-*.cache
+# Ignore files built by Visual Studio/Visual Micro
+[Dd]ebug/
+[Rr]elease/
+.vs/
+__vm/
+*.vcxproj*
+.vscode/
+platform.sloeber.txt
+boards.sloeber.txt
 
-# Python
+# Ignore docs build (Sphinx)
+docs/build
+docs/source/_build
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-venv/
-env/
+_build/
 
-# Compiled files
-*.exe
-*.dll
-*.so
+# Test log files
+*.log
+debug.cfg
+debug.svd
+debug_custom.json
+libraries/Insights/examples/*/*.ino.zip
 
-# Test files
-test_results/
-coverage/
+# Vale Style
+.vale/styles/*
+!.vale/styles/Vocab/
+.vale/styles/Vocab/*
+!.vale/styles/Vocab/Espressif/
+
+# Ignore Lib Builder Docker run scripts
+/run.sh
+/run.ps1
+
+# Ignore dependency analysis artifacts
+/dependencies.json
+/dependencies_reverse.json
+/affected_sketches.txt
+/affected_examples.txt
+/ctags_*

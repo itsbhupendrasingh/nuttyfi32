@@ -299,23 +299,25 @@ def add_files_to_git():
 def commit_and_push_to_github(is_new_repo=False):
     """Commit and push to GitHub"""
     if not check_git_installed():
-        return False, "Git not installed"
+        return False, "Git not installed. Please install Git from https://git-scm.com/downloads"
     
     try:
         # Initialize
-        init_git_repo()
+        is_new = init_git_repo()
+        if is_new:
+            is_new_repo = True
         
         # Add files
         files_added = add_files_to_git()
         if not files_added:
-            return False, "No files to add"
+            return False, "No files to add. Check if files exist."
         
         # Check if there are changes
         try:
             result = subprocess.run(["git", "status", "--porcelain"], cwd=BASE_DIR, check=True, capture_output=True, text=True)
             if not result.stdout.strip():
-                return False, "No changes to commit"
-        except:
+                return False, "No changes to commit (repository is up to date)"
+        except Exception as e:
             pass
         
         # Commit
@@ -324,17 +326,52 @@ def commit_and_push_to_github(is_new_repo=False):
         else:
             commit_msg = f"Update nuttyfi32 package v{VERSION}"
         
-        subprocess.run(["git", "commit", "-m", commit_msg], cwd=BASE_DIR, check=True)
+        try:
+            commit_result = subprocess.run(["git", "commit", "-m", commit_msg], cwd=BASE_DIR, check=True, capture_output=True, text=True)
+            print(f"    Commit message: {commit_msg}")
+        except subprocess.CalledProcessError as e:
+            if "nothing to commit" in e.stderr.lower():
+                return False, "Nothing to commit (no changes detected)"
+            return False, f"Commit failed: {e.stderr}"
         
-        # Push
-        if is_new_repo:
-            subprocess.run(["git", "push", "-u", "origin", GITHUB_BRANCH, "--force"], cwd=BASE_DIR, check=True)
-        else:
-            subprocess.run(["git", "push", "origin", GITHUB_BRANCH, "--force"], cwd=BASE_DIR, check=True)
-        
-        return True, f"Pushed {len(files_added)} files"
+        # Push with detailed error handling
+        try:
+            if is_new_repo:
+                push_cmd = ["git", "push", "-u", "origin", GITHUB_BRANCH, "--force"]
+            else:
+                push_cmd = ["git", "push", "origin", GITHUB_BRANCH, "--force"]
+            
+            push_result = subprocess.run(
+                push_cmd, 
+                cwd=BASE_DIR, 
+                check=True, 
+                capture_output=True, 
+                text=True,
+                timeout=60
+            )
+            
+            return True, f"Successfully pushed {len(files_added)} files to {GITHUB_BRANCH} branch"
+            
+        except subprocess.CalledProcessError as e:
+            error_msg = e.stderr if e.stderr else e.stdout if e.stdout else str(e)
+            
+            # Parse common errors
+            if "remote: Repository not found" in error_msg or "404" in error_msg:
+                return False, f"Repository not found. Please create it first:\n   https://github.com/new\n   Name: nuttyfi32\n   Then try again."
+            elif "Authentication failed" in error_msg or "Permission denied" in error_msg or "403" in error_msg:
+                return False, f"Authentication failed. Please:\n   1. Use Personal Access Token (not password)\n   2. Or setup SSH keys\n   3. GitHub → Settings → Developer settings → Personal access tokens"
+            elif "could not read Username" in error_msg:
+                return False, f"Credentials required. Please:\n   1. Configure Git credentials\n   2. Or use: git config --global user.name 'YourName'\n   3. Use Personal Access Token for password"
+            elif "refusing to merge unrelated histories" in error_msg:
+                return False, f"Branch conflict. Try: git pull origin {GITHUB_BRANCH} --allow-unrelated-histories"
+            else:
+                return False, f"Push failed: {error_msg[:200]}"
+                
+        except subprocess.TimeoutExpired:
+            return False, "Push timeout. Check internet connection."
+            
     except Exception as e:
-        return False, str(e)
+        return False, f"Unexpected error: {str(e)}"
 
 def print_task_status(task_num, total_tasks, task_name, status, details=""):
     """Print task status with clear indicators"""
@@ -503,7 +540,16 @@ def main():
                     print_task_status(task_num, total_tasks, tasks["push_github"]["name"], "DONE", tasks["push_github"]["details"])
                 else:
                     tasks["push_github"]["status"] = "FAILED"
-                    tasks["push_github"]["details"] = f"Failed: {message}"
+                    # Format multi-line error messages
+                    if "\n" in message:
+                        details_lines = message.split("\n")
+                        tasks["push_github"]["details"] = details_lines[0]
+                        # Print full error
+                        print(f"    Error Details:")
+                        for line in details_lines[1:]:
+                            print(f"    {line}")
+                    else:
+                        tasks["push_github"]["details"] = message
                     print_task_status(task_num, total_tasks, tasks["push_github"]["name"], "FAILED", tasks["push_github"]["details"])
             except Exception as e:
                 tasks["push_github"]["status"] = "FAILED"

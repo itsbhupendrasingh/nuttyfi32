@@ -247,8 +247,7 @@ temp_build/
 *.zip
 !nuttyfi32-*.zip
 
-# ESP32 BSP source
-arduino-esp32-master/
+# Source ZIP files (original ESP32 BSP downloads)
 esp32-*.zip
 
 # IDE
@@ -258,6 +257,8 @@ esp32-*.zip
 # OS
 .DS_Store
 Thumbs.db
+
+# Note: arduino-esp32-master/ is INCLUDED (source code with nuttyfi32 changes)
 """
         with open(gitignore_file, 'w', encoding='utf-8') as f:
             f.write(gitignore_content)
@@ -265,7 +266,7 @@ Thumbs.db
     return False
 
 def add_files_to_git():
-    """Add files to git"""
+    """Add files to git - includes ESP32 BSP source with nuttyfi32 changes"""
     files_added = []
     
     # Create .gitignore
@@ -273,7 +274,15 @@ def add_files_to_git():
         subprocess.run(["git", "add", ".gitignore"], cwd=BASE_DIR, check=False)
         files_added.append(".gitignore")
     
-    # Add important files
+    # Add ESP32 BSP source folder (with nuttyfi32 changes applied)
+    bsp_source = BASE_DIR / "arduino-esp32-master"
+    if bsp_source.exists() and bsp_source.is_dir():
+        print(f"    Adding ESP32 BSP source: arduino-esp32-master/")
+        # Add entire folder
+        subprocess.run(["git", "add", "arduino-esp32-master/"], cwd=BASE_DIR, check=False)
+        files_added.append("arduino-esp32-master/ (entire folder)")
+    
+    # Add package and build files
     files_to_add = [
         "package_nuttyfi32_index.json",
         "build_nuttyfi32_complete.py",
@@ -282,7 +291,10 @@ def add_files_to_git():
         "README.md",
         "QUICK_START.md",
         "GITHUB_SETUP.md",
-        f"nuttyfi32-{VERSION}.zip",
+        "FIX_GITHUB_PUSH.md",
+        "PERSONAL_ACCESS_TOKEN_GUIDE.md",
+        "check_github_setup.py",
+        # ZIP file excluded - upload via GitHub Releases
     ]
     
     for file_pattern in files_to_add:
@@ -347,18 +359,19 @@ def commit_and_push_to_github(is_new_repo=False):
             print(f"    When prompted, enter:")
             print(f"    Username: itsbhupendrasingh")
             print(f"    Password: [Your Personal Access Token - NOT GitHub password]")
-            print(f"\n    💡 Don't have token? See: PERSONAL_ACCESS_TOKEN_GUIDE.md")
-            print(f"    Or get token: https://github.com/settings/tokens")
+            print(f"\n    💡 Note: ZIP file (38MB) excluded from push to avoid timeout")
+            print(f"    Upload ZIP manually via GitHub Release after push")
             print()
             
             # Run push command - this will prompt for credentials if needed
+            # Increased timeout for large files (ZIP is 38MB)
             push_result = subprocess.run(
                 push_cmd, 
                 cwd=BASE_DIR, 
                 check=True, 
                 capture_output=False,  # Don't capture so user can see prompts
                 text=True,
-                timeout=120  # Increased timeout for authentication
+                timeout=600  # 10 minutes timeout for large file uploads
             )
             
             return True, f"Successfully pushed {len(files_added)} files to {GITHUB_BRANCH} branch"
@@ -396,7 +409,7 @@ def commit_and_push_to_github(is_new_repo=False):
                 return False, f"Push failed.\n   Error: {error_output[:300]}\n   \n   Try manual push:\n   cd \"{BASE_DIR}\"\n   git push -u origin Master\n   \n   Use Personal Access Token as password"
                 
         except subprocess.TimeoutExpired:
-            return False, "Push timeout.\n   Solution: Check internet connection and try again"
+            return False, f"Push timeout (10 minutes exceeded).\n   Large files may take time.\n   Solution:\n   1. Check internet connection\n   2. Try manual push: git push -u origin Master\n   3. Or exclude large files and push separately"
             
     except Exception as e:
         return False, f"Unexpected error: {str(e)}"
@@ -495,9 +508,25 @@ def main():
         task_num += 1
         print_task_status(task_num, total_tasks, tasks["apply_changes"]["name"], "IN PROGRESS")
         try:
+            # Apply changes to work directory (for ZIP)
             changes = rename_esp32_to_nuttyfi32(work_dir)
+            
+            # IMPORTANT: Also apply changes to original BSP source folder for GitHub push
+            source_changes = ""
+            if BSP_SOURCE.exists() and BSP_SOURCE.is_dir():
+                print(f"    Applying changes to original BSP source (arduino-esp32-master/)...")
+                try:
+                    source_changes = rename_esp32_to_nuttyfi32(BSP_SOURCE)
+                    print(f"    ✓ Updated original source: {source_changes}")
+                except Exception as e:
+                    print(f"    ⚠️  Warning: Could not update original source: {e}")
+                    source_changes = f"Warning: {e}"
+            
             tasks["apply_changes"]["status"] = "DONE"
-            tasks["apply_changes"]["details"] = f"Updated: {changes}"
+            if source_changes:
+                tasks["apply_changes"]["details"] = f"Updated: {changes} | Original source: {source_changes}"
+            else:
+                tasks["apply_changes"]["details"] = f"Updated: {changes}"
             print_task_status(task_num, total_tasks, tasks["apply_changes"]["name"], "DONE", tasks["apply_changes"]["details"])
         except Exception as e:
             tasks["apply_changes"]["status"] = "FAILED"

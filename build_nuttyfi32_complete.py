@@ -341,34 +341,62 @@ def commit_and_push_to_github(is_new_repo=False):
             else:
                 push_cmd = ["git", "push", "origin", GITHUB_BRANCH, "--force"]
             
+            print(f"    Pushing to: {GITHUB_REPO}")
+            print(f"    Branch: {GITHUB_BRANCH}")
+            print(f"\n    ⚠️  AUTHENTICATION REQUIRED:")
+            print(f"    When prompted, enter:")
+            print(f"    Username: itsbhupendrasingh")
+            print(f"    Password: [Your Personal Access Token - NOT GitHub password]")
+            print(f"\n    💡 Don't have token? See: PERSONAL_ACCESS_TOKEN_GUIDE.md")
+            print(f"    Or get token: https://github.com/settings/tokens")
+            print()
+            
+            # Run push command - this will prompt for credentials if needed
             push_result = subprocess.run(
                 push_cmd, 
                 cwd=BASE_DIR, 
                 check=True, 
-                capture_output=True, 
+                capture_output=False,  # Don't capture so user can see prompts
                 text=True,
-                timeout=60
+                timeout=120  # Increased timeout for authentication
             )
             
             return True, f"Successfully pushed {len(files_added)} files to {GITHUB_BRANCH} branch"
             
         except subprocess.CalledProcessError as e:
-            error_msg = e.stderr if e.stderr else e.stdout if e.stdout else str(e)
+            # Try to capture error if possible
+            error_output = ""
+            try:
+                if hasattr(e, 'stderr') and e.stderr:
+                    error_output += e.stderr
+                if hasattr(e, 'stdout') and e.stdout:
+                    error_output += e.stdout
+            except:
+                pass
+            
+            if not error_output:
+                error_output = str(e)
+            
+            error_lower = error_output.lower()
             
             # Parse common errors
-            if "remote: Repository not found" in error_msg or "404" in error_msg:
-                return False, f"Repository not found. Please create it first:\n   https://github.com/new\n   Name: nuttyfi32\n   Then try again."
-            elif "Authentication failed" in error_msg or "Permission denied" in error_msg or "403" in error_msg:
-                return False, f"Authentication failed. Please:\n   1. Use Personal Access Token (not password)\n   2. Or setup SSH keys\n   3. GitHub → Settings → Developer settings → Personal access tokens"
-            elif "could not read Username" in error_msg:
-                return False, f"Credentials required. Please:\n   1. Configure Git credentials\n   2. Or use: git config --global user.name 'YourName'\n   3. Use Personal Access Token for password"
-            elif "refusing to merge unrelated histories" in error_msg:
-                return False, f"Branch conflict. Try: git pull origin {GITHUB_BRANCH} --allow-unrelated-histories"
+            if "authentication failed" in error_lower or "permission denied" in error_lower or "403" in error_output or "forbidden" in error_lower or "invalid username or password" in error_lower:
+                return False, f"Authentication failed - Need Personal Access Token.\n   \n   Steps to fix:\n   1. Go to: https://github.com/settings/tokens\n   2. Click 'Generate new token (classic)'\n   3. Name: 'nuttyfi32-push'\n   4. Select: 'repo' (full control)\n   5. Click 'Generate token'\n   6. COPY the token (starts with 'ghp_')\n   7. Run script again\n   8. When prompted:\n      Username: itsbhupendrasingh\n      Password: [Paste token here - NOT your GitHub password]"
+            
+            elif "remote: repository not found" in error_lower or "404" in error_output:
+                return False, f"Repository not found.\n   But repository exists at: {GITHUB_REPO}\n   Check if you have access permissions"
+            
+            elif "could not read username" in error_lower:
+                return False, f"Credentials prompt failed.\n   Solution: Run manually:\n   git push -u origin Master\n   Then enter:\n   Username: itsbhupendrasingh\n   Password: [Personal Access Token]"
+            
+            elif "refusing to merge" in error_lower or "unrelated histories" in error_lower:
+                return False, f"Branch history conflict.\n   Solution:\n   cd \"{BASE_DIR}\"\n   git pull origin {GITHUB_BRANCH} --allow-unrelated-histories\n   Then run script again"
+            
             else:
-                return False, f"Push failed: {error_msg[:200]}"
+                return False, f"Push failed.\n   Error: {error_output[:300]}\n   \n   Try manual push:\n   cd \"{BASE_DIR}\"\n   git push -u origin Master\n   \n   Use Personal Access Token as password"
                 
         except subprocess.TimeoutExpired:
-            return False, "Push timeout. Check internet connection."
+            return False, "Push timeout.\n   Solution: Check internet connection and try again"
             
     except Exception as e:
         return False, f"Unexpected error: {str(e)}"
@@ -543,14 +571,21 @@ def main():
                     # Format multi-line error messages
                     if "\n" in message:
                         details_lines = message.split("\n")
-                        tasks["push_github"]["details"] = details_lines[0]
-                        # Print full error
-                        print(f"    Error Details:")
-                        for line in details_lines[1:]:
-                            print(f"    {line}")
+                        tasks["push_github"]["details"] = details_lines[0] if details_lines[0] else "Push failed"
+                        # Print full error with proper formatting
+                        print(f"\n    ⚠️  Detailed Error Information:")
+                        for i, line in enumerate(details_lines):
+                            if line.strip():
+                                print(f"    {line}")
                     else:
                         tasks["push_github"]["details"] = message
                     print_task_status(task_num, total_tasks, tasks["push_github"]["name"], "FAILED", tasks["push_github"]["details"])
+                    
+                    # Show troubleshooting tips
+                    print(f"\n    💡 Quick Fix:")
+                    print(f"    1. Run diagnostic: python check_github_setup.py")
+                    print(f"    2. Check FIX_GITHUB_PUSH.md for detailed solutions")
+                    print(f"    3. Or push manually: python push_to_github.py")
             except Exception as e:
                 tasks["push_github"]["status"] = "FAILED"
                 tasks["push_github"]["details"] = f"Error: {e}"

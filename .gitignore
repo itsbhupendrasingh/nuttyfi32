@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build files
+temp_build/
+*.zip
+!nuttyfi32-*.zip
+
+# ESP32 BSP source
+arduino-esp32-master/
+esp32-*.zip
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

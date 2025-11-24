@@ -234,59 +234,71 @@ def init_git_repo():
     return is_new_repo
 
 def create_gitignore():
-    """Create .gitignore file"""
+    """Create .gitignore file - only exclude build artifacts, not source code"""
     gitignore_file = BASE_DIR / ".gitignore"
-    if not gitignore_file.exists():
-        gitignore_content = """# Python
+    gitignore_content = """# Python cache
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 
-# Build files
+# Build temporary files
 temp_build/
+
+# Large ZIP files (upload via releases)
 *.zip
 !nuttyfi32-*.zip
 
-# Source ZIP files (original ESP32 BSP downloads)
+# Original ESP32 BSP download ZIPs
 esp32-*.zip
+arduino-esp32-*.zip
 
-# IDE
+# IDE files
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# OS
+# OS files
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Note: arduino-esp32-master/ is INCLUDED (source code with nuttyfi32 changes)
+# Note: arduino-esp32-master/ folder is INCLUDED - this is the source code!
 """
-        with open(gitignore_file, 'w', encoding='utf-8') as f:
-            f.write(gitignore_content)
-        return True
-    return False
+    # Always update .gitignore to ensure it's correct
+    with open(gitignore_file, 'w', encoding='utf-8') as f:
+        f.write(gitignore_content)
+    return True
 
 def add_files_to_git():
-    """Add files to git - includes ESP32 BSP source with nuttyfi32 changes"""
+    """Add ALL files to git - complete arduino-esp32-master folder and all project files"""
     files_added = []
     
-    # Create .gitignore
-    if create_gitignore():
-        subprocess.run(["git", "add", ".gitignore"], cwd=BASE_DIR, check=False)
-        files_added.append(".gitignore")
+    # Create/update .gitignore first
+    create_gitignore()
+    subprocess.run(["git", "add", ".gitignore"], cwd=BASE_DIR, check=False)
+    files_added.append(".gitignore")
     
-    # Add ESP32 BSP source folder (with nuttyfi32 changes applied)
+    # Add ENTIRE arduino-esp32-master folder with ALL files and subfolders
     bsp_source = BASE_DIR / "arduino-esp32-master"
     if bsp_source.exists() and bsp_source.is_dir():
-        print(f"    Adding ESP32 BSP source: arduino-esp32-master/")
-        # Add entire folder
+        print(f"    Adding COMPLETE ESP32 BSP source: arduino-esp32-master/")
+        print(f"    (This includes ALL files, folders, cores, libraries, tools, etc.)")
+        # Add entire folder recursively - ALL files
         subprocess.run(["git", "add", "arduino-esp32-master/"], cwd=BASE_DIR, check=False)
-        files_added.append("arduino-esp32-master/ (entire folder)")
+        # Count files being added
+        import os
+        file_count = sum([len(files) for r, d, files in os.walk(bsp_source)])
+        files_added.append(f"arduino-esp32-master/ ({file_count} files - COMPLETE)")
     
-    # Add package and build files
-    files_to_add = [
+    # Add all project files in root
+    print(f"    Adding project files...")
+    project_files = [
         "package_nuttyfi32_index.json",
         "build_nuttyfi32_complete.py",
         "push_to_github.py",
+        "push_with_token.py",
         "build_and_push.bat",
         "README.md",
         "QUICK_START.md",
@@ -294,10 +306,9 @@ def add_files_to_git():
         "FIX_GITHUB_PUSH.md",
         "PERSONAL_ACCESS_TOKEN_GUIDE.md",
         "check_github_setup.py",
-        # ZIP file excluded - upload via GitHub Releases
     ]
     
-    for file_pattern in files_to_add:
+    for file_pattern in project_files:
         file_path = BASE_DIR / file_pattern
         if file_path.exists():
             try:

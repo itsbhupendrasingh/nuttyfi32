@@ -1,0 +1,38 @@
+{
+  "data": {
+    "dataset_path": "data/raw",
+    "processed_path": "data/processed",
+    "train_test_split": 0.15,
+    "image_size": [224, 224],
+    "num_classes": 26
+  },
+  "model": {
+    "name": "CustomCNN",
+    "input_size": [224, 224, 3],
+    "num_classes": 26,
+    "dropout": 0.5
+  },
+  "training": {
+    "epochs": 50,
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "device": "cuda",
+    "save_best": true,
+    "early_stopping": {
+      "patience": 10,
+      "min_delta": 0.001
+    }
+  },
+  "paths": {
+    "model_save": "models/saved_models",
+    "output": "outputs",
+    "logs": "outputs/logs"
+  },
+  "data_collection": {
+    "output_path": "data/raw",
+    "image_format": "jpg",
+    "capture_delay": 0.1
+  }
+}
+

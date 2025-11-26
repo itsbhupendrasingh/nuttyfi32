@@ -1,0 +1,35 @@
+# Python cache only
+__pycache__/
+*.py[cod]
+*.pyc
+
+# Build temporary files
+temp_build/
+
+# Large ZIP files (upload via releases, not git)
+*.zip
+!nuttyfi32-*.zip
+
+# Original ESP32 BSP download ZIPs (not needed in repo)
+esp32-*.zip
+arduino-esp32-*.zip
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IMPORTANT: arduino-esp32-master/ folder is INCLUDED
+# All source code, cores, libraries, tools, variants, docs, etc. will be pushed
+
+# GitHub token (never commit this!)
+.github_token
+
+# Hash file for ZIP change detection
+.zip_hash

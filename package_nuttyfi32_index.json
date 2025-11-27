@@ -10,7 +10,7 @@
       },
       "platforms": [
         {
-          "name": "nuttyfi32",
+          "name": "NuttyFi32",
           "architecture": "esp32",
           "version": "1.0.0",
           "category": "ESP32",

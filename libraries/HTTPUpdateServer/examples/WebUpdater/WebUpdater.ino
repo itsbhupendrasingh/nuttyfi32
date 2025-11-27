@@ -3,7 +3,7 @@
 */
 
 #include <WiFi.h>
-#include <NetworkClient.h>
+#include <WiFiClient.h>
 #include <WebServer.h>
 #include <ESPmDNS.h>
 #include <HTTPUpdateServer.h>
@@ -13,9 +13,9 @@
 #define STAPSK  "your-password"
 #endif
 
-const char *host = "esp32-webupdate";
-const char *ssid = STASSID;
-const char *password = STAPSK;
+const char* host = "esp32-webupdate";
+const char* ssid = STASSID;
+const char* password = STAPSK;
 
 WebServer httpServer(80);
 HTTPUpdateServer httpUpdater;
@@ -33,9 +33,11 @@ void setup(void) {
     Serial.println("WiFi failed, retrying.");
   }
 
-  if (MDNS.begin(host)) {
+  MDNS.begin(host);
+  if (MDNS.begin("esp32")) {
     Serial.println("mDNS responder started");
   }
+
 
   httpUpdater.setup(&httpServer);
   httpServer.begin();

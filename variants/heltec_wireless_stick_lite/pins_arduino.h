@@ -4,12 +4,20 @@
 #include <stdint.h>
 
 #define Wireless_Stick_Lite true
-#define DISPLAY_HEIGHT      0
-#define DISPLAY_WIDTH       0
+#define DISPLAY_HEIGHT 0
+#define DISPLAY_WIDTH  0
+
+#define EXTERNAL_NUM_INTERRUPTS 16
+#define NUM_DIGITAL_PINS        40
+#define NUM_ANALOG_INPUTS       16
+
+#define analogInputToDigitalPin(p)  (((p)<20)?(esp32_adc2gpio[(p)]):-1)
+#define digitalPinToInterrupt(p)    (((p)<40)?(p):-1)
+#define digitalPinHasPWM(p)         (p < 34)
 
 static const uint8_t LED_BUILTIN = 25;
-#define BUILTIN_LED LED_BUILTIN  // backward compatibility
-#define LED_BUILTIN LED_BUILTIN  // allow testing #ifdef LED_BUILTIN
+#define BUILTIN_LED  LED_BUILTIN // backward compatibility
+#define LED_BUILTIN LED_BUILTIN
 
 static const uint8_t KEY_BUILTIN = 0;
 
@@ -19,10 +27,10 @@ static const uint8_t RX = 3;
 static const uint8_t SDA = 21;
 static const uint8_t SCL = 22;
 
-static const uint8_t SS = 18;
-static const uint8_t MOSI = 27;
-static const uint8_t MISO = 19;
-static const uint8_t SCK = 5;
+static const uint8_t SS    = 18;
+static const uint8_t MOSI  = 27;
+static const uint8_t MISO  = 19;
+static const uint8_t SCK   = 5;
 
 static const uint8_t A0 = 36;
 static const uint8_t A3 = 39;
@@ -56,7 +64,7 @@ static const uint8_t DAC1 = 25;
 static const uint8_t DAC2 = 26;
 
 static const uint8_t Vext = 21;
-static const uint8_t LED = 25;
+static const uint8_t LED  = 25;
 static const uint8_t RST_LoRa = 14;
 static const uint8_t DIO0 = 26;
 static const uint8_t DIO1 = 35;

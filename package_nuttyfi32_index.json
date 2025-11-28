@@ -16,8 +16,8 @@
           "category": "ESP32",
           "url": "https://github.com/itsbhupendrasingh/nuttyfi32/releases/download/1.0.0/nuttyfi32-1.0.0.zip",
           "archiveFileName": "nuttyfi32-1.0.0.zip",
-          "checksum": "SHA-256:859A2F836CC8500C7BF4E1502316EFAAE394DC4D30990FB969C670BA83298AAC",
-          "size": "50934795",
+          "checksum": "SHA-256:2156220EF23218242266766D087ED70F7B14FDE0C527D5D35533612BD1377014",
+          "size": "51232556",
           "boards": [
             {
               "name": "nuttyfi32 Dev Module"

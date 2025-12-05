@@ -1,106 +1,137 @@
-# Arduino core for the ESP32, ESP32-C3, ESP32-C5, ESP32-C6, ESP32-H2, ESP32-P4, ESP32-S2 and ESP32-S3.
+# NuttyFi32 — Arduino Boards Package for NuttyFi32 (Custom NuttyFi Board)
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/espressif/arduino-esp32/push.yml?branch=master&event=push&label=Compilation%20Tests)](https://github.com/espressif/arduino-esp32/actions/workflows/push.yml?query=branch%3Amaster+event%3Apush)
-[![Verbose Build Status](https://img.shields.io/github/actions/workflow/status/espressif/arduino-esp32/push.yml?branch=master&event=schedule&label=Compilation%20Tests%20(Verbose))](https://github.com/espressif/arduino-esp32/actions/workflows/push.yml?query=branch%3Amaster+event%3Aschedule)
-[![External Libraries Test](https://img.shields.io/github/actions/workflow/status/espressif/arduino-esp32/lib.yml?branch=master&event=schedule&label=External%20Libraries%20Test)](https://github.com/espressif/arduino-esp32/blob/gh-pages/LIBRARIES_TEST.md)
-[![Runtime Tests](https://github.com/espressif/arduino-esp32/blob/gh-pages/runtime-test-results/badge.svg)](https://github.com/espressif/arduino-esp32/blob/gh-pages/runtime-test-results/RUNTIME_TEST_RESULTS.md)
+<p align="left">
+  <a href="https://www.nuttyengineer.com/">
+    <img src="https://img.shields.io/badge/NuttyFi32-Arduino%20Boards%20Package-0d6efd?style=for-the-badge" 
+         alt="NuttyFi32" />
+  </a>
+  <img src="https://www.smedehradun.com/wp-content/uploads/2020/07/cropped-SME-origional-logo.png"
+       alt="SME Dehradun" height="28" style="vertical-align: middle; margin-left: 6px; margin-right: 6px;" />
+  <img src="https://img.shields.io/badge/Invented%20by-SME%20Dehradun-purple?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Made%20in-Bharat-orange?style=for-the-badge" />
+</p>
 
-### Need help or have a question? Join the chat at [Discord](https://discord.gg/8xY6e9crwv) or [open a new Discussion](https://github.com/espressif/arduino-esp32/discussions)
-
-[![Discord invite](https://img.shields.io/discord/1327272229427216425?logo=discord&logoColor=white&logoSize=auto&label=Discord)](https://discord.gg/8xY6e9crwv)
-
-## Contents
-
-  - [Development Status](#development-status)
-  - [Development Planning](#development-planning)
-  - [Documentation](#documentation)
-  - [Supported Chips](#supported-chips)
-  - [Decoding exceptions](#decoding-exceptions)
-  - [Issue/Bug report template](#issuebug-report-template)
-  - [Contributing](#contributing)
-
-### Development Status
-
-#### Latest Stable Release
-
-[![Release Version](https://img.shields.io/github/release/espressif/arduino-esp32.svg)](https://github.com/espressif/arduino-esp32/releases/latest/)
-[![Release Date](https://img.shields.io/github/release-date/espressif/arduino-esp32.svg)](https://github.com/espressif/arduino-esp32/releases/latest/)
-[![Downloads](https://img.shields.io/github/downloads/espressif/arduino-esp32/latest/total.svg)](https://github.com/espressif/arduino-esp32/releases/latest/)
-
-#### Latest Development Release
-
-[![Release Version](https://img.shields.io/github/release/espressif/arduino-esp32/all.svg)](https://github.com/espressif/arduino-esp32/releases/)
-[![Release Date](https://img.shields.io/github/release-date-pre/espressif/arduino-esp32.svg)](https://github.com/espressif/arduino-esp32/releases/)
-[![Downloads](https://img.shields.io/github/downloads-pre/espressif/arduino-esp32/latest/total.svg)](https://github.com/espressif/arduino-esp32/releases/)
-
-### Development Planning
-
-Our Development is fully tracked on this public **[Roadmap 🎉](https://github.com/orgs/espressif/projects/3)**
-
-For even more information you can join our **[Monthly Community Meetings 🔔](https://github.com/espressif/arduino-esp32/discussions/categories/monthly-community-meetings).**
-
-### Documentation
-
-You can use the [Arduino-ESP32 Online Documentation](https://docs.espressif.com/projects/arduino-esp32/en/latest/) to get all information about this project.
+The **NuttyFi32 (ESP32)** is a custom-designed IoT board built for stable Wi-Fi, Bluetooth, high-performance edge computing, and secure cloud communication.  
+This repository provides the **Arduino Boards Package** for NuttyFi32 with full Boards Manager support.
 
 ---
 
-**Migration guide from version 2.x to 3.x is available [here](https://docs.espressif.com/projects/arduino-esp32/en/latest/migration_guides/2.x_to_3.0.html).**
+## Install in Arduino IDE 2.x
+
+1. Open **File → Preferences → Additional Boards Manager Link / URLs** and add:
+
+   ```text
+   https://raw.githubusercontent.com/itsbhupendrasingh/nuttyfi32/master/package_nuttyfi32_index.json
+
+
+### 2️⃣ Open Boards Manager  
+**Tools → Board → Boards Manager…**  
+Search for **NuttyFi32** → **Install**
+
+### 3️⃣ Select Your Board  
+**Tools → Board → NuttyFi32 → NuttyFi32 (ESP32 Custom Board)**
 
 ---
 
-**APIs compatibility with ESP8266 and Arduino-CORE (Arduino.cc) is explained [here](https://docs.espressif.com/projects/arduino-esp32/en/latest/libraries.html#apis).**
+# 📦 Package Status
+
+![GitHub release](https://img.shields.io/github/v/release/itsbhupendrasingh/nuttyfi32)
+![GitHub Release Date](https://img.shields.io/github/release-date/itsbhupendrasingh/nuttyfi32)
+![Downloads](https://img.shields.io/github/downloads/itsbhupendrasingh/nuttyfi32/latest/total)
+![Platform](https://img.shields.io/badge/Platform-Arduino%20IDE%202.x-00979D?logo=arduino)
+![ESP32](https://img.shields.io/badge/Core-ESP32-blue?logo=espressif)
 
 ---
 
-* [Getting Started](https://docs.espressif.com/projects/arduino-esp32/en/latest/getting_started.html)
-* [Installing (Windows, Linux and macOS)](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html)
-* [Libraries](https://docs.espressif.com/projects/arduino-esp32/en/latest/libraries.html)
-* [Arduino as an ESP-IDF component](https://docs.espressif.com/projects/arduino-esp32/en/latest/esp-idf_component.html)
-* [FAQ](https://docs.espressif.com/projects/arduino-esp32/en/latest/faq.html)
-* [Troubleshooting](https://docs.espressif.com/projects/arduino-esp32/en/latest/troubleshooting.html)
+# 🎯 Features Included in This Package
 
-### Supported Chips
+✔ NuttyFi32 **variant configuration**  
+✔ **Pin mapping** for your custom PCB  
+✔ **Optimized flash partitions**  
+✔ **LittleFS / SPIFFS support**  
+✔ **Wi-Fi, BLE, OTA examples**  
+✔ **Board-specific settings** for stable uploads  
 
-Here are the ESP32 series supported by the Arduino-ESP32 project:
+This package is built on top of the official ESP32 Arduino core:  
+➡ https://github.com/espressif/arduino-esp32
 
-| **SoC**  | **Stable** | **Development** |                                           **Datasheet**                                           |
-|----------|:----------:|:---------------:|:-------------------------------------------------------------------------------------------------:|
-| ESP32    |     Yes    |       Yes       |    [ESP32](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf)    |
-| ESP32-C3 |     Yes    |       Yes       | [ESP32-C3](https://www.espressif.com/sites/default/files/documentation/esp32-c3_datasheet_en.pdf) |
-| ESP32-C5 |     Yes    |       Yes       | [ESP32-C5](https://www.espressif.com/sites/default/files/documentation/esp32-c5_datasheet_en.pdf) |
-| ESP32-C6 |     Yes    |       Yes       | [ESP32-C6](https://www.espressif.com/sites/default/files/documentation/esp32-c6_datasheet_en.pdf) |
-| ESP32-H2 |     Yes    |       Yes       | [ESP32-H2](https://www.espressif.com/sites/default/files/documentation/esp32-h2_datasheet_en.pdf) |
-| ESP32-P4 |     Yes    |       Yes       | [ESP32-P4](https://www.espressif.com/sites/default/files/documentation/esp32-p4_datasheet_en.pdf) |
-| ESP32-S2 |     Yes    |       Yes       | [ESP32-S2](https://www.espressif.com/sites/default/files/documentation/esp32-s2_datasheet_en.pdf) |
-| ESP32-S3 |     Yes    |       Yes       | [ESP32-S3](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf) |
+---
 
-> [!NOTE]
-> ESP32-C2 and ESP32-C61 are also supported by Arduino-ESP32 but require using Arduino as an ESP-IDF component or rebuilding the static libraries.
-> For more information, see the [Arduino as an ESP-IDF component documentation](https://docs.espressif.com/projects/arduino-esp32/en/latest/esp-idf_component.html) or the
-> [Lib Builder documentation](https://docs.espressif.com/projects/arduino-esp32/en/latest/lib_builder.html), respectively.
+# 🧭 Quick Links
 
-For more details visit the [supported chips](https://docs.espressif.com/projects/arduino-esp32/en/latest/getting_started.html#supported-soc-s) documentation page.
 
-### Decoding exceptions
+* **Boards Manager URL:**
+  ```text
+   https://raw.githubusercontent.com/itsbhupendrasingh/nuttyfi32/master/package_nuttyfi32_index.json
 
-You can use [EspExceptionDecoder](https://github.com/me-no-dev/EspExceptionDecoder) to get meaningful call trace.
 
-### Issue/Bug report template
+### Boards
+### Issues & Support  
+https://github.com/itsbhupendrasingh/nuttyfi32/issues
 
-Before reporting an issue, make sure you've searched for similar one that was already created. Also make sure to go through all the issues labeled as [Type: For reference](https://github.com/espressif/arduino-esp32/issues?q=is%3Aissue+label%3A%22Type%3A+For+reference%22+).
 
-Finally, if you are sure no one else had the issue, follow the **Issue template** or **Feature request template** while reporting any [new Issue](https://github.com/espressif/arduino-esp32/issues/new/choose).
 
-### External libraries compilation test
+# 🚀 Getting Started
 
-We have set-up CI testing for external libraries for ESP32 Arduino core. You can check test results in the file [LIBRARIES_TEST](https://github.com/espressif/arduino-esp32/blob/gh-pages/LIBRARIES_TEST.md).
-For more information and how to add your library to the test see [external library testing](https://docs.espressif.com/projects/arduino-esp32/en/latest/external_libraries_test.html) in the documentation.
+## 🔹 Blink Example - Inbuilt LED
 
-### Contributing
+```cpp
+#const int LED_PIN = 13;   // NuttyFi32 built-in LED
 
-We welcome contributions to the Arduino ESP32 project!
+void setup() {
+  Serial.begin(115200);
+  delay(50);
+  Serial.println("Simple blink start on NuttyFi32");
+  pinMode(LED_PIN, OUTPUT);
+}
 
-See [contributing](https://docs.espressif.com/projects/arduino-esp32/en/latest/contributing.html) in the documentation for more information on how to contribute to the project.
+void loop() {
+  digitalWrite(LED_PIN, HIGH);   // LED ON
+  Serial.println("LED ON");
+  delay(1000);
 
-> We would like to have this repository in a polite and friendly atmosphere, so please be kind and respectful to others. For more details, look at [Code of Conduct](https://github.com/espressif/arduino-esp32/blob/master/CODE_OF_CONDUCT.md).
+  digitalWrite(LED_PIN, LOW);    // LED OFF
+  Serial.println("LED OFF");
+  delay(1000);
+}
+
+```
+
+## 🔹 LED Fade Example - Inbuilt LED
+
+```cpp
+const int LED_PIN = 13;      // Built-in LED on NuttyFi32
+const int PWM_CH = 0;        // Channel 0–15
+const int PWM_FREQ = 5000;   // 5 kHz
+const int PWM_RES = 8;       // 8-bit (0–255)
+
+int brightness = 0;
+int fadeAmount = 5;
+
+void setup() {
+  Serial.begin(115200);
+  delay(200);   // small delay for serial monitor
+
+  Serial.println("NuttyFi32 LED Fade Example Started");
+
+  ledcSetup(PWM_CH, PWM_FREQ, PWM_RES);
+  ledcAttachPin(LED_PIN, PWM_CH);
+}
+
+void loop() {
+  ledcWrite(PWM_CH, brightness);
+
+  // print current brightness
+  Serial.print("Brightness: ");
+  Serial.println(brightness);
+
+  brightness += fadeAmount;
+
+  if (brightness <= 0 || brightness >= 255) {
+    fadeAmount = -fadeAmount;
+  }
+
+  delay(30);
+}
+
+```

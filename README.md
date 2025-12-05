@@ -29,7 +29,7 @@ This repository provides the **Arduino Boards Package** for NuttyFi32 with full 
 Search for **NuttyFi32** → **Install**
 
 ### 3️⃣ Select Your Board  
-**Tools → Board → NuttyFi32 → NuttyFi32 (ESP32 Custom Board)**
+**Tools → Board → NuttyFi32 → NuttyFi32 **
 
 ---
 

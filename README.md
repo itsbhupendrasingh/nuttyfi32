@@ -11,7 +11,7 @@
   <img src="https://img.shields.io/badge/Made%20in-Bharat-orange?style=for-the-badge" />
 </p>
 
-The **NuttyFi32 (ESP32)** is a custom-designed IoT board built for stable Wi-Fi, Bluetooth, high-performance edge computing, and secure cloud communication.  
+The **NuttyFi32** is a custom-designed IoT board built for stable Wi-Fi, Bluetooth, high-performance edge computing, and secure cloud communication.  
 This repository provides the **Arduino Boards Package** for NuttyFi32 with full Boards Manager support.
 
 ---

@@ -25,11 +25,11 @@ This repository provides the **Arduino Boards Package** for NuttyFi32 with full 
 
 
 ### 2️⃣ Open Boards Manager  
-**Tools → Board → Boards Manager…**  
-Search for **NuttyFi32** → **Install**
+> 2. **Tools → Board → Boards Manager…** → search **“NuttyFi32”** → **Install**.
+> 3. Select **Tools → Board → NuttyFi32 → NuttyFi32** and you’re set.
 
 ### 3️⃣ Select Your Board  
-**Tools → Board → NuttyFi32 → NuttyFi32 **
+> **Tools → Board → NuttyFi32 → NuttyFi32**
 
 ---
 
@@ -73,7 +73,7 @@ https://github.com/itsbhupendrasingh/nuttyfi32/issues
 
 # 🚀 Getting Started
 
-## 🔹 Blink Example - Inbuilt LED
+## 🔹 Blink Example - Nuttyfi32 Inbuilt LED
 
 ```cpp
 #const int LED_PIN = 13;   // NuttyFi32 built-in LED
@@ -97,7 +97,7 @@ void loop() {
 
 ```
 
-## 🔹 LED Fade Example - Inbuilt LED
+## 🔹 LED Fade Example - Nuttyfi32 Inbuilt LED
 
 ```cpp
 const int LED_PIN = 13;      // Built-in LED on NuttyFi32

@@ -43,6 +43,23 @@ This repository provides the **Arduino Boards Package** for NuttyFi32 with full 
 
 ---
 
+# Build & Test Status
+
+![GitHub release](https://img.shields.io/github/v/release/itsbhupendrasingh/nuttyfi32)
+![Compilation Tests](https://img.shields.io/badge/Compilation%20Tests-passing-brightgreen)
+![Compilation Tests (Verbose)](https://img.shields.io/badge/Compilation%20Tests%20(Verbose)-passing-brightgreen)
+![External Libraries Test](https://img.shields.io/badge/External%20Libraries%20Test-passing-brightgreen)
+![Runtime Tests](https://img.shields.io/badge/Runtime%20Tests-failing-red)
+![Supported: NuttyFi32](https://img.shields.io/badge/Supported-NuttyFi%2032-blue)
+![Supported: ESP32](https://img.shields.io/badge/Supported-ESP32-green)
+![License](https://img.shields.io/github/license/itsbhupendrasingh/NuttyFiOTA)
+![Arduino IDE](https://img.shields.io/badge/Platform-Arduino%20IDE-blue?logo=arduino)
+![PlatformIO](https://img.shields.io/badge/Platform-PlatformIO-orange?logo=platformio)
+![Arduino CLI](https://img.shields.io/badge/Platform-Arduino%20CLI-green?logo=arduino)
+![MicroPython](https://img.shields.io/badge/Platform-MicroPython-black?logo=micropython)
+
+---
+
 # 🎯 Features Included in This Package
 
 ✔ NuttyFi32 **variant configuration**  
@@ -135,3 +152,15 @@ void loop() {
 }
 
 ```
+
+
+---
+
+## Credits
+
+- **[Schematics Microelectronics (SME Dehradun)](https://www.smedehradun.com/)** — NuttyFi hardware & Arduino package  
+- **[NuttyFi32]** — product page & board details.  
+- **[ESP8266 Arduino Core maintainers]** — underlying platform & toolchain
+
+
+---

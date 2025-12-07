@@ -159,8 +159,8 @@ void loop() {
 ## Credits
 
 - **[Schematics Microelectronics (SME Dehradun)](https://www.smedehradun.com/)** — NuttyFi hardware & Arduino package  
-- **[NuttyFi32]** — product page & board details.  
-- **[ESP8266 Arduino Core maintainers]** — underlying platform & toolchain
+- **[NuttyFi32](https://www.nuttyengineer.com/product/nuttyfi32/)** — product page & board details.  
+- **[ESP32 Arduino Core maintainers](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/contribute/index.html)** — underlying platform & toolchain
 
 
 ---

@@ -2,7 +2,7 @@
   "packages": [
     {
       "name": "NuttyFi32",
-      "maintainer": "SME Community",
+      "maintainer": "SME Dehradun",
       "websiteURL": "https://github.com/itsbhupendrasingh/nuttyfi32",
       "email": "itsbhupendrasingh@gmail.com",
       "help": {
@@ -11,31 +11,31 @@
       "platforms": [
         {
           "name": "NuttyFi32",
-          "architecture": "esp32",
+          "architecture": "nuttyfi32",
           "version": "1.0.0",
-          "category": "ESP32",
+          "category": "Contributed",
           "url": "https://github.com/itsbhupendrasingh/nuttyfi32/releases/download/1.0.0/nuttyfi32-1.0.0.zip",
           "archiveFileName": "nuttyfi32-1.0.0.zip",
-          "checksum": "SHA-256:9b9f0311d9c37eb5548f4f66c86164d42d2c4cfffeb40fab25c7d41941481881",
-          "size": "51168080",
+          "checksum": "SHA-256:641a9b0bf574cf4c3293acb813dc0270c52c690cdc9896696252415b5c8542fa",
+          "size": "50897714",
           "boards": [
             {
-              "name": "nuttyfi32 Dev Module"
+              "name": "NuttyFi32 Dev Module"
             }
           ],
           "toolsDependencies": [
             {
-              "packager": "esp32",
+              "packager": "NuttyFi32",
               "name": "xtensa-esp32-elf-gcc",
               "version": "1.22.0-97-gc752ad5-5.2.0"
             },
             {
-              "packager": "esp32",
+              "packager": "NuttyFi32",
               "name": "esptool_py",
               "version": "5.1.0"
             },
             {
-              "packager": "esp32",
+              "packager": "NuttyFi32",
               "name": "mkspiffs",
               "version": "0.2.3"
             }
@@ -110,14 +110,14 @@
           "version": "5.1.0",
           "systems": [
             {
-              "host": "i686-mingw32",
-              "url": "https://github.com/espressif/esptool/releases/download/v5.1.0/esptool-v5.1.0-windows-i686.zip",
-              "archiveFileName": "esptool-v5.1.0-windows-i686.zip",
-              "checksum": "SHA-256:8a9c2d1f9e5d7b3c8f1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w",
-              "size": "59500000"
+              "host": "x86_64-mingw32",
+              "url": "https://github.com/espressif/esptool/releases/download/v5.1.0/esptool-v5.1.0-windows-amd64.zip",
+              "archiveFileName": "esptool-v5.1.0-windows-amd64.zip",
+              "checksum": "SHA-256:f68a8f7728adfc59cd60f9424928199e76eac66372c7bdc23898aa32753a437a",
+              "size": "59936293"
             },
             {
-              "host": "x86_64-mingw32",
+              "host": "i686-mingw32",
               "url": "https://github.com/espressif/esptool/releases/download/v5.1.0/esptool-v5.1.0-windows-amd64.zip",
               "archiveFileName": "esptool-v5.1.0-windows-amd64.zip",
               "checksum": "SHA-256:f68a8f7728adfc59cd60f9424928199e76eac66372c7bdc23898aa32753a437a",
@@ -146,8 +146,8 @@
             },
             {
               "host": "i686-pc-linux-gnu",
-              "url": "https://github.com/espressif/esptool/releases/download/v5.1.0/esptool-v5.1.0-linux-i686.tar.gz",
-              "archiveFileName": "esptool-v5.1.0-linux-i686.tar.gz",
+              "url": "https://github.com/espressif/esptool/releases/download/v5.1.0/esptool-v5.1.0-linux-amd64.tar.gz",
+              "archiveFileName": "esptool-v5.1.0-linux-amd64.tar.gz",
               "checksum": "SHA-256:49d572d50f6b1f089d1d81d3bd3bd357fbcc40f4f8fd4874f2dc51ad534abb01",
               "size": "57690602"
             },
@@ -194,13 +194,6 @@
             },
             {
               "host": "arm64-apple-darwin",
-              "url": "https://github.com/igrr/mkspiffs/releases/download/0.2.3/mkspiffs-0.2.3-arduino-esp32-osx.tar.gz",
-              "archiveFileName": "mkspiffs-0.2.3-arduino-esp32-osx.tar.gz",
-              "checksum": "SHA-256:9f43fc74a858cf564966b5035322c3e5e61c31a647c5a1d71b388ed6efc48423",
-              "size": "130270"
-            },
-            {
-              "host": "i386-apple-darwin",
               "url": "https://github.com/igrr/mkspiffs/releases/download/0.2.3/mkspiffs-0.2.3-arduino-esp32-osx.tar.gz",
               "archiveFileName": "mkspiffs-0.2.3-arduino-esp32-osx.tar.gz",
               "checksum": "SHA-256:9f43fc74a858cf564966b5035322c3e5e61c31a647c5a1d71b388ed6efc48423",

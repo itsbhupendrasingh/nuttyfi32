@@ -16,11 +16,11 @@
           "category": "Contributed",
           "url": "https://github.com/itsbhupendrasingh/nuttyfi32/releases/download/1.0.0/nuttyfi32-1.0.0.zip",
           "archiveFileName": "nuttyfi32-1.0.0.zip",
-          "checksum": "SHA-256:641a9b0bf574cf4c3293acb813dc0270c52c690cdc9896696252415b5c8542fa",
-          "size": "50897714",
+          "checksum": "SHA-256:18f4df0028c2cbb8fe9c9d0294b41480487ef352b4469e78b743ca0aac0c4d26",
+          "size": "50897710",
           "boards": [
             {
-              "name": "NuttyFi32 Dev Module"
+              "name": "NuttyFi32"
             }
           ],
           "toolsDependencies": [

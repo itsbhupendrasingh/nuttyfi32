@@ -123,18 +123,6 @@ nuttyfi32.menu.FlashSize.16M.build.flash_size=16MB
 
 nuttyfi32.menu.UploadSpeed.921600=921600
 nuttyfi32.menu.UploadSpeed.921600.upload.speed=921600
-nuttyfi32.menu.UploadSpeed.115200=115200
-nuttyfi32.menu.UploadSpeed.115200.upload.speed=115200
-nuttyfi32.menu.UploadSpeed.256000.windows=256000
-nuttyfi32.menu.UploadSpeed.256000.upload.speed=256000
-nuttyfi32.menu.UploadSpeed.230400.windows.upload.speed=256000
-nuttyfi32.menu.UploadSpeed.230400=230400
-nuttyfi32.menu.UploadSpeed.230400.upload.speed=230400
-nuttyfi32.menu.UploadSpeed.460800.linux=460800
-nuttyfi32.menu.UploadSpeed.460800.macosx=460800
-nuttyfi32.menu.UploadSpeed.460800.upload.speed=460800
-nuttyfi32.menu.UploadSpeed.512000.windows=512000
-nuttyfi32.menu.UploadSpeed.512000.upload.speed=512000
 
 nuttyfi32.menu.DebugLevel.none=None
 nuttyfi32.menu.DebugLevel.none.build.code_debug=0

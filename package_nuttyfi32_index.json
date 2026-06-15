@@ -12,12 +12,12 @@
         {
           "name": "NuttyFi32",
           "architecture": "nuttyfi32",
-          "version": "1.0.0",
+          "version": "1.0.1",
           "category": "Contributed",
-          "url": "https://github.com/itsbhupendrasingh/nuttyfi32/releases/download/1.0.0/nuttyfi32-1.0.0.zip",
-          "archiveFileName": "nuttyfi32-1.0.0.zip",
-          "checksum": "SHA-256:22f067840a97e1b4514a0cdcc10fefc1f818b72d3caa2d47946e278e58fd29d7",
-          "size": "50897628",
+          "url": "https://github.com/itsbhupendrasingh/nuttyfi32/releases/download/1.0.1/nuttyfi32-1.0.1.zip",
+          "archiveFileName": "nuttyfi32-1.0.1.zip",
+          "checksum": "SHA-256:0376f1db372bcde1fa3fabbe4a860e80572939f9e4e9ba2d38b15d9e4469b4da",
+          "size": "50897652",
           "boards": [
             {
               "name": "NuttyFi32"

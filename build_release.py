@@ -156,9 +156,14 @@ def main():
     update_package_index(args.version, size, checksum)
 
     print("\nDone! Next steps:")
-    print(f"  1. Upload {os.path.basename(zip_path)} to GitHub release {args.version}")
-    print(f"  2. Push updated package_nuttyfi32_index.json to repo")
-    print(f"  3. Users add this URL in Arduino IDE preferences:")
+    print(f"  1. gh release create {args.version} {os.path.basename(zip_path)} \\")
+    print(f"       --repo itsbhupendrasingh/nuttyfi32 --title nuttyfi32-{args.version}")
+    print(f"  2. git commit -am 'Release {args.version}'")
+    print(f"  3. git push origin Master && git push origin Master:main")
+    print(f"     ^ push BOTH: the Boards Manager URL is served from a branch, and a")
+    print(f"       stale branch would hand users an index without this release in it.")
+    print(f"  4. Users add either URL in Arduino IDE preferences (both are live):")
+    print(f"     https://raw.githubusercontent.com/itsbhupendrasingh/nuttyfi32/main/package_nuttyfi32_index.json")
     print(f"     https://raw.githubusercontent.com/itsbhupendrasingh/nuttyfi32/Master/package_nuttyfi32_index.json")
 
 

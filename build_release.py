@@ -11,6 +11,7 @@ Usage:
 """
 
 import argparse
+import copy
 import hashlib
 import json
 import os
@@ -90,27 +91,60 @@ def build_zip(version):
     return zip_path, file_size, checksum
 
 
+def version_key(v):
+    """Sort key for a semver-ish version string, so 1.0.10 > 1.0.9."""
+    parts = []
+    for chunk in str(v).split("."):
+        num = ""
+        while chunk and chunk[0].isdigit():
+            num += chunk[0]
+            chunk = chunk[1:]
+        parts.append((int(num) if num else 0, chunk))
+    return parts
+
+
 def update_package_index(version, size, checksum):
+    """Add this version to the index, keeping every previously released version.
+
+    Boards Manager only offers versions that are listed in platforms[], so an
+    entry must never be removed once it has been published -- dropping one makes
+    that release uninstallable even though its asset is still on GitHub.
+    """
     index_path = os.path.join(REPO_DIR, "package_nuttyfi32_index.json")
 
     with open(index_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    platform = data["packages"][0]["platforms"][0]
-    platform["version"] = version
-    platform["checksum"] = f"SHA-256:{checksum}"
-    platform["size"] = str(size)
-    platform["url"] = f"https://github.com/itsbhupendrasingh/nuttyfi32/releases/download/{version}/nuttyfi32-{version}.zip"
-    platform["archiveFileName"] = f"nuttyfi32-{version}.zip"
+    platforms = data["packages"][0]["platforms"]
+    if not platforms:
+        raise SystemExit("index has no platform entries to use as a template")
+
+    existing = next((p for p in platforms if p["version"] == version), None)
+    if existing is None:
+        newest = max(platforms, key=lambda p: version_key(p["version"]))
+        existing = copy.deepcopy(newest)
+        platforms.append(existing)
+        action = "added"
+    else:
+        action = "updated"
+
+    existing["version"] = version
+    existing["checksum"] = f"SHA-256:{checksum}"
+    existing["size"] = str(size)
+    existing["url"] = f"https://github.com/itsbhupendrasingh/nuttyfi32/releases/download/{version}/nuttyfi32-{version}.zip"
+    existing["archiveFileName"] = f"nuttyfi32-{version}.zip"
+
+    platforms.sort(key=lambda p: version_key(p["version"]))
 
     with open(index_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
         f.write("\n")
 
     print(f"\nUpdated {index_path}")
-    print(f"  version: {version}")
+    print(f"  {action} version: {version}")
     print(f"  checksum: SHA-256:{checksum}")
     print(f"  size: {size}")
+    print(f"  index now offers: {', '.join(p['version'] for p in platforms)}")
 
 
 def main():

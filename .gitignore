@@ -8,7 +8,6 @@ temp_build/
 
 # Large ZIP files (upload via releases, not git)
 *.zip
-!nuttyfi32-*.zip
 
 # Original ESP32 BSP download ZIPs (not needed in repo)
 esp32-*.zip

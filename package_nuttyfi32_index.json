@@ -12,12 +12,76 @@
         {
           "name": "NuttyFi32",
           "architecture": "nuttyfi32",
+          "version": "1.0.0",
+          "category": "Contributed",
+          "url": "https://github.com/itsbhupendrasingh/nuttyfi32/releases/download/1.0.0/nuttyfi32-1.0.0.zip",
+          "archiveFileName": "nuttyfi32-1.0.0.zip",
+          "checksum": "SHA-256:22f067840a97e1b4514a0cdcc10fefc1f818b72d3caa2d47946e278e58fd29d7",
+          "size": "50897628",
+          "boards": [
+            {
+              "name": "NuttyFi32"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "NuttyFi32",
+              "name": "xtensa-esp32-elf-gcc",
+              "version": "1.22.0-97-gc752ad5-5.2.0"
+            },
+            {
+              "packager": "NuttyFi32",
+              "name": "esptool_py",
+              "version": "5.1.0"
+            },
+            {
+              "packager": "NuttyFi32",
+              "name": "mkspiffs",
+              "version": "0.2.3"
+            }
+          ]
+        },
+        {
+          "name": "NuttyFi32",
+          "architecture": "nuttyfi32",
           "version": "1.0.1",
           "category": "Contributed",
           "url": "https://github.com/itsbhupendrasingh/nuttyfi32/releases/download/1.0.1/nuttyfi32-1.0.1.zip",
           "archiveFileName": "nuttyfi32-1.0.1.zip",
           "checksum": "SHA-256:0376f1db372bcde1fa3fabbe4a860e80572939f9e4e9ba2d38b15d9e4469b4da",
           "size": "50897652",
+          "boards": [
+            {
+              "name": "NuttyFi32"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "NuttyFi32",
+              "name": "xtensa-esp32-elf-gcc",
+              "version": "1.22.0-97-gc752ad5-5.2.0"
+            },
+            {
+              "packager": "NuttyFi32",
+              "name": "esptool_py",
+              "version": "5.1.0"
+            },
+            {
+              "packager": "NuttyFi32",
+              "name": "mkspiffs",
+              "version": "0.2.3"
+            }
+          ]
+        },
+        {
+          "name": "NuttyFi32",
+          "architecture": "nuttyfi32",
+          "version": "1.0.2",
+          "category": "Contributed",
+          "url": "https://github.com/itsbhupendrasingh/nuttyfi32/releases/download/1.0.2/nuttyfi32-1.0.2.zip",
+          "archiveFileName": "nuttyfi32-1.0.2.zip",
+          "checksum": "SHA-256:47c0023bd4ce751c591b088e72de32b7fc22b0df553f1c87dbc28641619b7bf7",
+          "size": "50897655",
           "boards": [
             {
               "name": "NuttyFi32"

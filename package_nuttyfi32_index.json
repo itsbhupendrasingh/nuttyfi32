@@ -80,8 +80,8 @@
           "category": "Contributed",
           "url": "https://github.com/itsbhupendrasingh/nuttyfi32/releases/download/1.0.2/nuttyfi32-1.0.2.zip",
           "archiveFileName": "nuttyfi32-1.0.2.zip",
-          "checksum": "SHA-256:47c0023bd4ce751c591b088e72de32b7fc22b0df553f1c87dbc28641619b7bf7",
-          "size": "50897655",
+          "checksum": "SHA-256:6838538857fb8b328468816590772a7070ce94741a0cc7fccc888bb6156a4a1b",
+          "size": "50897650",
           "boards": [
             {
               "name": "NuttyFi32"

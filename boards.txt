@@ -11,7 +11,7 @@ menu.PSRAM=PSRAM
 ### NuttyFi32 Board Support Package - SME Dehradun         ###
 ##############################################################
 
-nuttyfi32.name=NuttyFi32 (v1.0.2)
+nuttyfi32.name=NuttyFi32
 
 nuttyfi32.upload.tool=esptool_py
 nuttyfi32.upload.maximum_size=1310720
